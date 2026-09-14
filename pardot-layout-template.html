@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>%%title%%</title>
+  <meta name="description" content="%%description%%">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #2979f2;
+      --color-accent: #ed4e35;
+      --color-text: #20242a;
+      --color-muted: #667085;
+      --color-surface: #ededed;
+      --color-white: #ffffff;
+      --color-border: #d0d5dd;
+      --page-width: 1400px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--color-white);
+      color: var(--color-text);
+      font-family: "Lato", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: var(--color-primary); }
+    h1, h2, h3 {
+      margin-top: 0;
+      font-family: "Inter", Arial, sans-serif;
+      line-height: 1.2;
+    }
+    h1 { font-size: clamp(2rem, 4vw, 3.5rem); }
+    h2 { font-size: clamp(1.55rem, 3vw, 2.35rem); }
+
+    .page-shell {
+      width: min(100%, var(--page-width));
+      margin: 0 auto;
+      padding: 42px 48px 0;
+    }
+
+    .site-header { padding-bottom: 38px; }
+    .site-header img { width: 202px; }
+
+    .landing-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 1fr) minmax(0, 2fr);
+      gap: 42px;
+      align-items: start;
+      padding-bottom: 48px;
+    }
+
+    .form-panel {
+      position: sticky;
+      top: 24px;
+      padding: 40px;
+      background: var(--color-surface);
+    }
+
+    .form-panel-title {
+      margin-bottom: 24px;
+      text-align: center;
+      font-size: 1.35rem;
+    }
+
+    .form-region:empty::before {
+      display: block;
+      color: var(--color-muted);
+      text-align: center;
+      content: "Pardot landing-page content or form appears here.";
+    }
+
+    .hero-image { margin-bottom: 34px; }
+    .page-copy { padding: 0 18px; }
+    .page-copy p { margin: 0 0 1.25rem; }
+    .page-copy hr {
+      margin: 50px 0;
+      border: 0;
+      border-top: 1px solid var(--color-border);
+    }
+    .feature { margin: 0 0 1.35rem; }
+    .feature strong { color: var(--color-accent); }
+
+    .site-footer {
+      margin: 0 -48px;
+      padding: 50px;
+      background: var(--color-surface);
+      text-align: center;
+    }
+    .site-footer img {
+      width: 47px;
+      margin: 0 auto 20px;
+    }
+    .site-footer a { font-size: 12px; }
+
+    /* Pardot form styling */
+    form.form { margin: 0; padding: 0; }
+    form.form p { margin: 0 0 16px; padding: 0; }
+    form.form p label {
+      float: none;
+      display: block;
+      width: auto;
+      margin: 0 0 6px;
+      padding: 0;
+      background: none;
+      color: #444;
+      font-size: 14px;
+      text-align: left;
+    }
+    form.form p.required label,
+    form.form span.required label { background: none; padding-left: 0; }
+    form.form span.value { margin-left: 0; }
+    form.form input.text,
+    form.form input.date,
+    form.form select,
+    form.form textarea.standard {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      background: var(--color-white);
+      color: var(--color-text);
+      font: inherit;
+    }
+    form.form textarea.standard { min-height: 90px; resize: vertical; }
+    form.form input.text:focus,
+    form.form input.date:focus,
+    form.form select:focus,
+    form.form textarea.standard:focus {
+      border-color: var(--color-primary);
+      outline: 2px solid rgba(41, 121, 242, .18);
+      outline-offset: 0;
+    }
+    form.form p.submit { margin: 26px 0 0; text-align: center; }
+    form.form p.submit input {
+      margin: 0;
+      padding: 13px 34px;
+      border: 0;
+      border-radius: 44px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      cursor: pointer;
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 20px;
+      text-transform: uppercase;
+    }
+    form.form p.submit input:hover,
+    form.form p.submit input:focus { background: #185fc4; }
+    form.form p.no-label { margin-left: 0; }
+    form.form p.errors {
+      padding: 10px;
+      background: var(--color-accent);
+      color: var(--color-white);
+    }
+    form.form p.error.no-label {
+      margin-left: 0;
+      color: #ba0517;
+    }
+    form.form span.description {
+      display: block;
+      margin: 6px 0 0;
+      color: var(--color-muted);
+      font-size: 12px;
+    }
+    form.form .pd-checkbox .value span,
+    form.form .pd-radio .value span { display: block; }
+    form.form .pd-checkbox label.inline,
+    form.form .pd-radio label.inline {
+      display: inline;
+      font-weight: 400;
+    }
+
+    @media (max-width: 900px) {
+      .page-shell { padding: 30px 28px 0; }
+      .landing-grid { grid-template-columns: 1fr; }
+      .form-panel { position: static; order: 2; }
+      .content-panel { order: 1; }
+      .site-footer { margin: 0 -28px; }
+    }
+
+    @media (max-width: 540px) {
+      .page-shell { padding: 24px 18px 0; }
+      .site-header { padding-bottom: 26px; }
+      .landing-grid { gap: 28px; }
+      .form-panel { padding: 28px 20px; }
+      .page-copy { padding: 0; }
+      .site-footer { margin: 0 -18px; padding: 40px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div pardot-region="header-logo" pardot-region-type="WYSIWYG">
+        <img
+          src="https://drofus.cdn.salesforce-experience.com/cms/delivery/media/MCJVD7VQBOHNDELLKPVPVN4I2USE?oid=00D1I000003HUqvUAG&amp;channelId=0apPd000000021pIAA"
+          alt="Nemetschek"
+          width="202">
+      </div>
+    </header>
+
+    <main class="landing-grid">
+      <aside class="form-panel" aria-label="Registration form">
+        <div pardot-region="form-heading" pardot-region-type="WYSIWYG">
+          <h2 class="form-panel-title">Claim Your Free Fuel Pack</h2>
+        </div>
+
+        <!--
+          Pardot inserts the landing page's content/form at %%content%%.
+          Add or select the Pardot form when creating the landing page.
+        -->
+        <div class="form-region">
+          %%content%%
+        </div>
+      </aside>
+
+      <section class="content-panel">
+        <div class="hero-image" pardot-region="hero-image" pardot-region-type="WYSIWYG">
+          <img
+            src="https://drofus.cdn.salesforce-experience.com/cms/delivery/media/MCECAAVRWE55CHPHBNU3YIPRTNXQ?oid=00D1I000003HUqvUAG&amp;channelId=0apPd000000021pIAA"
+            alt="dRofus healthcare conference Fuel Pack">
+        </div>
+
+        <div class="page-copy" pardot-region="main-content" pardot-region-type="WYSIWYG">
+          <h1>Fuel Up for HCD, HFSE, or Your Work Day—On Us.</h1>
+
+          <p>Conference days are packed. Between sessions, meetings, networking, and walking the show floor, you’re going to need a little fuel.</p>
+
+          <p><strong>dRofus is giving HCD/HFSE attendees a complimentary Fuel Pack</strong> filled with snacks and a few conference essentials to help you stay energized throughout the show.</p>
+
+          <p><strong>Not attending either conference?</strong><br>
+          We will still send you a Fuel Pack to power your work day.</p>
+
+          <p><strong>Quantities are limited—claim yours before they’re gone.</strong></p>
+
+          <h2>While You’re Here, See How dRofus Is Helping Healthcare Teams Work Smarter</h2>
+
+          <p>Your snacks aren’t the only reason to stop by.</p>
+
+          <p>dRofus helps healthcare organizations, architects, planners, and project teams bring their <strong>room requirements, equipment, planning data, and BIM workflows together in one connected source of truth.</strong></p>
+
+          <p>Stop by during either conference to see how teams are using dRofus to:</p>
+
+          <p class="feature"><strong>Centralize Healthcare Planning Data</strong><br>
+          Keep room, equipment, and project requirements organized and accessible throughout the project lifecycle.</p>
+
+          <p class="feature"><strong>Connect Requirements to Design</strong><br>
+          Give owners and design teams a better way to compare what was planned with what’s actually being designed.</p>
+
+          <p class="feature"><strong>Standardize Across Projects</strong><br>
+          Create repeatable room types, equipment standards, and requirements that can be carried across projects and facilities.</p>
+
+          <p class="feature"><strong>Make Better Decisions With Better Data</strong><br>
+          Move beyond disconnected spreadsheets and documents toward structured information teams can actually use.</p>
+
+          <hr>
+
+          <h2>Grab Your Fuel Pack. Stay for the Conversation.</h2>
+
+          <p>Reserve your complimentary pack now, then come meet the dRofus team at HFSE or HCD and discover what a more data-driven approach to healthcare planning and design can look like.</p>
+
+          <p><strong>Healthcare Facilities Symposium &amp; Expo<br>
+          Visit us at Booth 405</strong></p>
+
+          <p><strong>Healthcare Design Conference + Expo<br>
+          Visit us at Booth 1845</strong></p>
+
+          <p>We look forward to connecting with you!</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div pardot-region="footer-content" pardot-region-type="WYSIWYG">
+        <img
+          src="https://drofus.cdn.salesforce-experience.com/cms/delivery/media/MCTXDDGUEV4RCWPG4QF62O7IAQGU?oid=00D1I000003HUqvUAG&amp;channelId=0apPd000000021pIAA"
+          alt="Nemetschek">
+        <a href="https://www.drofus.com/en/privacy-policy">Privacy Policy</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
